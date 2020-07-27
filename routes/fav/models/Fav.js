@@ -11,6 +11,7 @@ const FavSchema = new Schema({
       lat: String,
       lon: String,
       description: String,
+      tId: String,
       }
   ]
 });

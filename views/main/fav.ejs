@@ -213,7 +213,6 @@
                     <th scope="col">Thumbnail</th>
                     <th scope="col">Trail Name</th>
                     <th scope="col">Trail ID</th>
-                    <th scope="col" class="text-center">Quantity</th>
                     <th scope="col" class="text-right">City</th>
                     <th></th>
                   </tr>
@@ -222,21 +221,24 @@
                   <tr>
                     <% if(foundFavs!==null){ for(let i = 0; i <
                     foundFavs.items.length; i++){ %>
+                
                     <td>
+                      <a
+                  href="/api/trails/single-trail/<%=foundFavs.items[i].id%>"
+                  style="text-decoration: none; color: #000;">
                       <img id="cart-images"
                         src="<%=foundFavs.items[i].image%>"
                       />
+                    </a>
                     </td>
+  
                     <td><%=foundFavs.items[i].name%></td>
-                    <td><%=foundFavs.items[i]._id%> </td>
-                    <td style="text-align:center">
-                      1
-                    </td>
+                    <td><%=foundFavs.items[i].tId%> </td>
                     <td class="text-right">
                       <%=foundFavs.items[i].city%>
                     </td>
                     <td class="text-right">
-                      <form method="post" action="/api/fav/trail/remove">
+                      <form role="form" method="POST" action="/api/fav/trail/remove?_method=DELETE">
                         <input type="hidden" name="item" value="<%=foundFavs.items[i]._id%>"/>
                         <input type="hidden" name="lat" value="<%=foundFavs.items[i].lat%>"/>
                         <input type="hidden" name="lon" value="<%=foundFavs.items[i].lon%>"/>

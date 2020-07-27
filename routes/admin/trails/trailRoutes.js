@@ -83,6 +83,32 @@ router.get('/single-trail/:lat/:lon/:allLat/:allLon', (req, res, next) => {
       console.log(error);
     });
 });
+router.get('/single-trail/:id', (req, res, next) => {
+  // let lat = req.params.lat;
+  // let lon = req.params.lon;
+  // const { allLat, allLon } = req.params;
+  let id = req.params.id
+  const api = '0b539ff2a9msh7d3f5f23a531e1cp1d0c8ejsn4e597722bd11';
+  // const currentDate = await Date.now();
+  axios({
+    method: 'GET',
+    url: `https://trailapi-trailapi.p.rapidapi.com/trails/${id}`,
+    headers: {
+      'content-type': 'application/octet-stream',
+      'x-rapidapi-host': 'trailapi-trailapi.p.rapidapi.com',
+      'x-rapidapi-key': api,
+      useQueryString: true,
+    },
+  })
+    .then((response) => {
+      console.log(response.data);
+      let trails = response.data;
+      return res.render('main/single-trail', { trails});
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
 router.get('/save/single-trail/:lat/:lon/:allLat/:allLon', (req, res, next) => {
   console.log('header', res.header());
   let lat = req.params.lat;
@@ -109,6 +135,7 @@ router.get('/save/single-trail/:lat/:lon/:allLat/:allLon', (req, res, next) => {
     .then((response) => {
       let foundTrails = response.data;
       Fav.findOne({ owner: req.user._id }).then((favorite) => {
+        console.log(foundTrails)
         const trail = {
           name: foundTrails.data[0].name,
           city: foundTrails.data[0].city,
@@ -116,6 +143,7 @@ router.get('/save/single-trail/:lat/:lon/:allLat/:allLon', (req, res, next) => {
           lon: foundTrails.data[0].lon,
           image: foundTrails.data[0].thumbnail,
           description: foundTrails.data[0].description,
+          tId: foundTrails.data[0].id,
         };
         favorite.items.push(trail);
         // console.log("this is trail",trail)

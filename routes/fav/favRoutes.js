@@ -6,6 +6,7 @@ router.post('/:trail_id', (req, res, next) => {
     .then((fav) => {
       fav.items.push({
         item: req.body.trail_id,
+        //why isnt it params above?
         // price: parseFloat(req.body.priceValue),
         // quantity: parseInt(req.body.quantity),
       });
@@ -35,7 +36,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.post('/trail/remove', (req, res, next) => {
+router.delete('/trail/remove', (req, res, next) => {
   Fav.findOne({ owner: req.user._id }).then((fav) => {
     fav.items.pull(String(req.body.item));
     // cart.total = (cart.total - parseFloat(req.body.price)).toFixed(2);

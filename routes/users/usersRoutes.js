@@ -42,7 +42,7 @@ router.post('/register', userValidation, register,createUserFav);
 
 router.get('/register', (req, res) => {
   if (req.isAuthenticated()) {
-    return res.redirect('/');
+    return res.redirect('/api/users/');
   }
   return res.render('auth/register');
 });
@@ -67,7 +67,7 @@ router.get('/register', (req, res) => {
 
 router.get('/login', (req, res) => {
   if (req.isAuthenticated()) {
-    return res.redirect(301, '/');
+    return res.redirect(301, '/api/users/');
   }
   return res.render('auth/login');
 });
