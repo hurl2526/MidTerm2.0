@@ -244,8 +244,8 @@
 
               <b>Description:</b> <%= foundTrails.data[i].description %> 
             </p>
-            <a href="/api/foundTrails/riddle/<%= foundTrails.data[i].id %>" class="btn  btn-md" style="background-color:gold">Reveal Treasure On This Trail</a>
-            <a href="/api/foundTrails/add-treasure/<%= foundTrails.data[i].id %>/<%=foundTrails.data[i].lat%>/<%=foundTrails.data[i].lon%>" class="btn  btn-md" style="background-color:gold">Add Treasure To This Trail</a>
+            <a href="/api/trails/riddle/<%= foundTrails.data[i].id %>" class="btn  btn-md" style="background-color:gold">Reveal Treasure On This Trail</a>
+            <a href="/api/trails/add-treasure/<%= foundTrails.data[i].id %>/<%=foundTrails.data[i].lat%>/<%=foundTrails.data[i].lon%>" class="btn  btn-md" style="background-color:gold">Add Treasure To This Trail</a>
             <a
             href="/api/trails/all/<%= allLat %>/<%= allLon %>  "
             class="btn btn-success" 
