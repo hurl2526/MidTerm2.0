@@ -55,7 +55,7 @@ router.get('/single-trail/:lat/:lon/:allLat/:allLon', (req, res, next) => {
   let lat = req.params.lat;
   let lon = req.params.lon;
   const { allLat, allLon } = req.params;
-  const api = '0b539ff2a9msh7d3f5f23a531e1cp1d0c8ejsn4e597722bd11';
+  const api = process.env.API;
   // const currentDate = await Date.now();
   axios({
     method: 'GET',
@@ -63,7 +63,7 @@ router.get('/single-trail/:lat/:lon/:allLat/:allLon', (req, res, next) => {
     headers: {
       'content-type': 'application/octet-stream',
       'x-rapidapi-host': 'trailapi-trailapi.p.rapidapi.com',
-      'x-rapidapi-key': '0b539ff2a9msh7d3f5f23a531e1cp1d0c8ejsn4e597722bd11',
+      'x-rapidapi-key': api,
       useQueryString: true,
     },
     params: {
@@ -88,7 +88,7 @@ router.get('/single-trail/:id', (req, res, next) => {
   // let lon = req.params.lon;
   // const { allLat, allLon } = req.params;
   let id = req.params.id
-  const api = '0b539ff2a9msh7d3f5f23a531e1cp1d0c8ejsn4e597722bd11';
+  const api = process.env.API;
   // const currentDate = await Date.now();
   axios({
     method: 'GET',
@@ -113,7 +113,7 @@ router.get('/save/single-trail/:lat/:lon/:allLat/:allLon', (req, res, next) => {
   console.log('header', res.header());
   let lat = req.params.lat;
   let lon = req.params.lon;
-  const api = '0b539ff2a9msh7d3f5f23a531e1cp1d0c8ejsn4e597722bd11';
+  const api = process.env.API;
   // const currentDate = await Date.now();
   axios({
     method: 'GET',
@@ -121,7 +121,7 @@ router.get('/save/single-trail/:lat/:lon/:allLat/:allLon', (req, res, next) => {
     headers: {
       'content-type': 'application/octet-stream',
       'x-rapidapi-host': 'trailapi-trailapi.p.rapidapi.com',
-      'x-rapidapi-key': '0b539ff2a9msh7d3f5f23a531e1cp1d0c8ejsn4e597722bd11',
+      'x-rapidapi-key': api,
       useQueryString: true,
     },
     params: {
@@ -178,11 +178,10 @@ router.get('/save/single-trail/:lat/:lon/:allLat/:allLon', (req, res, next) => {
 router.get('/:zip', async (req, res, next) => {
   console.log('hello zip');
   try {
-    const api =
-      'yaY02DcVxoZepInXaCW4dADQXEbZiu4UuDQA9Z8GgcVSMOoyF9QC3zrZwWSnt2mY';
+    const api2 = process.env.API2;
     const zip = req.params.zip;
     console.log(zip);
-    const url = `https://www.zipcodeapi.com/rest/${api}/info.json/${zip}/degrees`;
+    const url = `https://www.zipcodeapi.com/rest/${api2}/info.json/${zip}/degrees`;
     const info = await axios.get(url);
     const lat = info.data.lat;
     const lon = info.data.lng;
@@ -196,7 +195,7 @@ router.get('/:zip', async (req, res, next) => {
 router.get('/all/:lat/:lon', function (req, res, next) {
   let lat = req.params.lat;
   let lon = req.params.lon;
-  const api = '0b539ff2a9msh7d3f5f23a531e1cp1d0c8ejsn4e597722bd11';
+  const api = process.env.API;
   // const currentDate = await Date.now();
   axios({
     method: 'GET',
@@ -204,7 +203,7 @@ router.get('/all/:lat/:lon', function (req, res, next) {
     headers: {
       'content-type': 'application/octet-stream',
       'x-rapidapi-host': 'trailapi-trailapi.p.rapidapi.com',
-      'x-rapidapi-key': '0b539ff2a9msh7d3f5f23a531e1cp1d0c8ejsn4e597722bd11',
+      'x-rapidapi-key': api,
       lat: lat,
       lon: lon,
       useQueryString: true,
