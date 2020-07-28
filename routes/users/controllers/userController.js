@@ -32,34 +32,6 @@ module.exports = {
     }
   },
 
-  //   register: (req, res, next) => {
-  //     const errors = validationResult(req);
-  //     if (!errors.isEmpty())
-  //       return res.status(422).json({ errors: errors.array() });
-  //     User.findOne({ email: req.body.email }).then((user) => {
-  //       if (user) {
-  //         return res.status(401).json({ msg: 'User already Exists' });
-  //       } else {
-  //         const user = new User();
-  //         user.profile.name = req.body.name;
-  //         user.email = req.body.email;
-  //         user.password = req.body.password;
-
-  //         user.save().then((user) => {
-  //           req.login(user, (err) => {
-  //             if (err) {
-  //               return res
-  //                 .status(400)
-  //                 .json({ confirmation: false, message: err });
-  //             } else {
-  //               res.redirect('/');
-  //             }
-  //             return res.status(200).json({ message: 'success', user });
-  //           });
-  //         });
-  //       }
-  //     });
-  //   },
   updateProfile: (params, id) => {
     return new Promise((resolve, reject) => {
       User.findById(id)
