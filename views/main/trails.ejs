@@ -148,8 +148,21 @@
           
                 <h4 class="my-4 font-weight-bold"><%= trails.data[i].name %> </h4>
                 <p class="grey-text">
-                  Trail ID: <%=trails.data[i].id %></br>
-                  Description: <%= trails.data[i].description %> 
+                  <div>
+                    <b>City:</b> <%=trails.data[i].city  %>
+                  </div>
+                <div>
+                  <b>Trail ID:</b> <%=trails.data[i].id %>
+                </div>
+                <div>
+                  <b>Length:</b> <%=trails.data[i].length %> miles
+                </div>
+                <div>
+                  <b>Rating:</b> <%=trails.data[i].rating %>
+                </div>
+                <div>
+                  <b>Difficulty:</b> <%=trails.data[i].description.slice(0,150)+'...' %>
+                </div>
                 </p>
               </div>
             <% } %>

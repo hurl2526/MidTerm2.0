@@ -231,14 +231,18 @@
             </a>
             <h4 class="mb-3"><strong><%= foundTrails.data[i].name %> </strong></h4>
             <p>
-              Trail ID:<%= foundTrails.data[i].id %>
-            </p> 
-            <p>
-              Description: <%= foundTrails.data[i].description %> 
-            </p>
-            <p>
-              by <a><strong>Jessica Clark</strong></a
-              >, 26/08/2016
+              <b>City:</b> <%=foundTrails.data[i].city  %></br>
+            
+
+              <b>Length:</b> <%=foundTrails.data[i].length %> miles</br>
+            
+
+              <b>Rating:</b> <%=foundTrails.data[i].rating %></br>
+            
+
+              <b>Trail ID:</b> <%= foundTrails.data[i].id %></br>
+
+              <b>Description:</b> <%= foundTrails.data[i].description %> 
             </p>
             <a href="/api/foundTrails/riddle/<%= foundTrails.data[i].id %>" class="btn  btn-md" style="background-color:gold">Reveal Treasure On This Trail</a>
             <a href="/api/foundTrails/add-treasure/<%= foundTrails.data[i].id %>/<%=foundTrails.data[i].lat%>/<%=foundTrails.data[i].lon%>" class="btn  btn-md" style="background-color:gold">Add Treasure To This Trail</a>
